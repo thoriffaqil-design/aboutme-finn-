@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>finn 2334 • about me</title>
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts Premium -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Clash+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* ===== CINEMATIC BACKGROUND - 5 LAYER MOTION ===== */
+        @keyframes gradientOrbit {
+            0% { background-position: 0% 0%; }
+            50% { background-position: 100% 100%; }
+            100% { background-position: 0% 0%; }
+        }
+        
+        @keyframes floatSoft {
+            0% { transform: translateY(0) translateX(0); }
+            50% { transform: translateY(-20px) translateX(10px); }
+            100% { transform: translateY(0) translateX(0); }
+        }
+        
+        @keyframes glowPulse {
+            0% { opacity: 0.3; filter: blur(40px); }
+            50% { opacity: 0.6; filter: blur(60px); }
+            100% { opacity: 0.3; filter: blur(40px); }
+        }
+        
+        @keyframes waveFlow {
+            0% { transform: translateX(0) translateY(0); }
+            50% { transform: translateX(-15%) translateY(2px); }
+            100% { transform: translateX(-30%) translateY(0); }
+        }
+        
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+            background: #03080e;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        /* LAYER 1: DEEP SPACE BASE */
+        .cinematic-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse at 40% 50%, #00101f, #00050a);
+            z-index: -5;
+        }
+        
+        /* LAYER 2: NEBULA ORBIT - BERGERAK LAMBAT */
+        .nebula-bg {
+            position: fixed;
+            top: -20%;
+            left: -20%;
+            width: 140%;
+            height: 140%;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(0, 150, 255, 0.12) 0%, transparent 35%),
+                radial-gradient(circle at 80% 70%, rgba(0, 100, 220, 0.1) 0%, transparent 40%),
+                radial-gradient(circle at 40% 80%, rgba(0, 200, 255, 0.09) 0%, transparent 45%),
+                radial-gradient(circle at 70% 20%, rgba(0, 120, 255, 0.11) 0%, transparent 38%);
+            animation: gradientOrbit 35s ease infinite;
+            z-index: -4;
+        }
+        
+        /* LAYER 3: AURORA VEIL - TRANSPARAN BERKILAU */
+        .aurora-veil {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(45deg, 
+                rgba(0,180,255,0.02) 0px, 
+                rgba(0,120,255,0.01) 20px, 
+                rgba(0,200,255,0.02) 40px,
+                transparent 60px);
+            background-size: 400% 400%;
+            animation: gradientOrbit 25s ease infinite reverse;
+            z-index: -3;
+            opacity: 0.4;
+        }
+        
+        /* LAYER 4: FLOATING ORBS */
+        .orb-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            pointer-events: none;
+        }
+        
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, rgba(0,200,255,0.1), rgba(0,100,255,0.02));
+            filter: blur(30px);
+            animation: floatSoft 20s infinite alternate;
+        }
+        
+        /* LAYER 5: MICRO PARTICLES - BERGERAK HALUS */
+        .micro-particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+        
+        .microparticle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: rgba(100, 200, 255, 0.25);
+            border-radius: 50%;
+            box-shadow: 0 0 8px rgba(0,180,255,0.3);
+            animation: floatParticle 18s infinite linear;
+        }
+        
+        @keyframes floatParticle {
+            0% { transform: translateY(0) translateX(0); opacity: 0; }
+            10% { opacity: 0.5; }
+            90% { opacity: 0.3; }
+            100% { transform: translateY(-100vh) translateX(20px); opacity: 0; }
+        }
+        
+        /* ===== LOADING SCREEN PREMIUM ===== */
+        .finn-loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 30%, #030c14, #010508);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            z-index: 9999;
+            transition: opacity 1s ease, visibility 1s ease;
+            font-family: 'Clash Display', sans-serif;
+        }
+        
+        .finn-loading.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+        
+        .loading-sigil {
+            width: 140px;
+            height: 140px;
+            position: relative;
+            margin-bottom: 40px;
+        }
+        
+        .loading-ring {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 2px solid rgba(0, 180, 255, 0.2);
+            border-radius: 50%;
+            animation: loadingSpin 12s linear infinite;
+        }
+        
+        .loading-ring:nth-child(2) {
+            width: 80%;
+            height: 80%;
+            top: 10%;
+            left: 10%;
+            border-color: rgba(0, 140, 255, 0.3);
+            border-width: 1.5px;
+            animation: loadingSpinReverse 15s linear infinite;
+        }
+        
+        .loading-ring:nth-child(3) {
+            width: 60%;
+            height: 60%;
+            top: 20%;
+            left: 20%;
+            border-color: rgba(64, 224, 255, 0.4);
+            border-width: 1px;
+            border-style: dashed;
+            animation: loadingSpin 20s linear infinite;
+        }
+        
+        .loading-core {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(145deg, #0066ff, #00ccff);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 32px;
+            font-weight: 800;
+            box-shadow: 0 0 50px #0066ff;
+            animation: corePulse 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes loadingSpin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        @keyframes loadingSpinReverse {
+            from { transform: rotate(360deg); }
+            to { transform: rotate(0deg); }
+        }
+        
+        @keyframes corePulse {
+            0% { transform: translate(-50%, -50%) scale(1); box-shadow: 0 0 40px #0066ff; }
+            100% { transform: translate(-50%, -50%) scale(1.15); box-shadow: 0 0 80px #00ccff; }
+        }
+        
+        .loading-title {
+            color: white;
+            font-size: 40px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            letter-spacing: 6px;
+            background: linear-gradient(145deg, #ffffff, #c0f0ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-family: 'Clash Display', sans-serif;
+        }
+        
+        .loading-bar-container {
+            width: 340px;
+            height: 6px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 6px;
+            border: 1px solid rgba(0,200,255,0.2);
+            overflow: hidden;
+            backdrop-filter: blur(4px);
+        }
+        
+        .loading-bar {
+            width: 0%;
+            height: 100%;
+            background: linear-gradient(90deg, #0066ff, #00ddff, #9900ff, #0066ff);
+            background-size: 300% 100%;
+            animation: loadingProgress 2.4s forwards, shimmer 3s linear infinite;
+        }
+        
+        @keyframes loadingProgress {
+            0% { width: 0%; }
+            100% { width: 100%; }
+        }
+        
+        @keyframes shimmer {
+            0% { background-position: 0% 0; }
+            100% { background-position: 300% 0; }
+        }
+        
+        /* ===== PROFILE CARD - CINEMATIC ULTRA ===== */
+        .cinematic-profile {
+            max-width: 880px;
+            width: 100%;
+            background: rgba(8, 14, 22, 0.68);
+            backdrop-filter: blur(35px);
+            -webkit-backdrop-filter: blur(35px);
+            border: 1.5px solid rgba(0, 180, 255, 0.25);
+            border-radius: 48px;
+            box-shadow: 0 50px 90px -30px rgba(0,0,0,0.9), 0 0 0 1px rgba(0,200,255,0.08) inset;
+            position: relative;
+            z-index: 30;
+            overflow: hidden;
+            animation: cinematicFadeIn 1s ease;
+        }
+        
+        @keyframes cinematicFadeIn {
+            from { opacity: 0; transform: translateY(40px) scale(0.98); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        
+        /* BANNER CINEMATIC */
+        .cinematic-banner {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(145deg, #002b4c, #001a2e, #001524);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .banner-hologram {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M10 20 L90 20 M20 10 L20 90 M30 30 L70 70 M70 30 L30 70" stroke="rgba(0,200,255,0.06)" stroke-width="0.8"/><circle cx="50" cy="50" r="3" fill="rgba(255,255,255,0.08)"/><circle cx="80" cy="30" r="2" fill="rgba(0,200,255,0.08)"/></svg>');
+            background-size: 60px 60px;
+            opacity: 0.4;
+            animation: bannerDrift 50s linear infinite;
+        }
+        
+        @keyframes bannerDrift {
+            0% { background-position: 0 0; }
+            100% { background-position: 100px 100px; }
+        }
+        
+        .banner-glow {
+            position: absolute;
+            top: -50%;
+            left: -20%;
+            width: 140%;
+            height: 200%;
+            background: radial-gradient(ellipse at center, rgba(0,150,255,0.15) 0%, transparent 70%);
+            animation: glowPulse 8s ease-in-out infinite;
+            pointer-events: none;
+        }
+        
+        .banner-fade-cinematic {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 120px;
+            background: linear-gradient(to top, rgba(8,14,22,0.95), transparent);
+        }
+        
+        /* AVATAR SECTION - DIMENSION */
+        .avatar-dimension {
+            position: relative;
+            margin-top: -80px;
+            margin-left: 45px;
+            display: flex;
+            align-items: flex-end;
+            gap: 30px;
+            margin-bottom: 25px;
+        }
+        
+        .avatar-cinematic {
+            position: relative;
+            width: 150px;
+            height: 150px;
+            border-radius: 40px;
+            background: #0e1a24;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 6px solid rgba(8, 14, 22, 0.95);
+            backdrop-filter: blur(8px);
+            box-shadow: 0 25px 45px -15px rgba(0,0,0,0.7);
+        }
+        
+        .avatar-crystal {
+            position: absolute;
+            top: -8px;
+            left: -8px;
+            right: -8px;
+            bottom: -8px;
+            border-radius: 46px;
+            background: linear-gradient(145deg, #0066ff, #00ccff, #9900ff);
+            opacity: 0.3;
+            filter: blur(18px);
+            z-index: -1;
+            animation: crystalBreath 5s ease-in-out infinite alternate;
+        }
+        
+        @keyframes crystalBreath {
+            0% { opacity: 0.2; filter: blur(15px); }
+            100% { opacity: 0.5; filter: blur(25px); }
+        }
+        
+        .avatar-image-cinematic {
+            width: 100%;
+            height: 100%;
+            background-image: url('https://i.postimg.cc/jSD4wJ4P/Screenshot-20260212-200121-Whats-App-Business.png');
+            background-size: cover;
+            background-position: center;
+            border-radius: 34px;
+            border: 2px solid rgba(255,255,255,0.9);
+            transition: transform 0.4s ease;
+        }
+        
+        .avatar-image-cinematic:hover {
+            transform: scale(1.03);
+        }
+        
+        .status-cinematic {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            width: 28px;
+            height: 28px;
+            background: #00e676;
+            border-radius: 50%;
+            border: 4px solid rgba(8, 14, 22, 0.95);
+            box-shadow: 0 0 30px #00ffaa;
+            animation: statusGlow 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes statusGlow {
+            0% { box-shadow: 0 0 20px #00e676; }
+            100% { box-shadow: 0 0 40px #00ffaa; }
+        }
+        
+        /* USER INFO PREMIUM */
+        .user-info-cinematic {
+            flex: 1;
+            padding-bottom: 20px;
+        }
+        
+        .name-cinematic {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-bottom: 10px;
+        }
+        
+        .global-name-cinematic {
+            font-size: 44px;
+            font-weight: 800;
+            font-family: 'Clash Display', sans-serif;
+            background: linear-gradient(145deg, #ffffff, #d0f0ff, #a0e0ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -1px;
+            text-shadow: 0 0 40px rgba(0,180,255,0.3);
+        }
+        
+        .verified-cinematic {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 38px;
+            height: 38px;
+            background: linear-gradient(145deg, #0066ff, #1a8cff);
+            border-radius: 50%;
+            color: white;
+            font-size: 20px;
+            box-shadow: 0 0 40px #1a8cff;
+            border: 2px solid rgba(255,255,255,0.6);
+        }
+        
+        .badge-origin-cinematic {
+            background: rgba(0, 150, 255, 0.15);
+            backdrop-filter: blur(12px);
+            border: 1.8px solid #00aaff;
+            color: #e0f5ff;
+            padding: 8px 26px;
+            border-radius: 60px;
+            font-size: 15px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 0 30px rgba(0,170,255,0.2);
+        }
+        
+        .username-cinematic {
+            display: flex;
+            align-items: center;
+            gap: 22px;
+            flex-wrap: wrap;
+            color: #c0e0ff;
+            font-size: 20px;
+            margin-top: 8px;
+        }
+        
+        .username-cinematic i {
+            color: #4db8ff;
+            text-shadow: 0 0 15px #0066ff;
+        }
+        
+        .clone-cinematic {
+            background: rgba(255, 80, 80, 0.1);
+            border: 1px solid rgba(255, 120, 120, 0.5);
+            color: #ffd0d0;
+            padding: 6px 24px;
+            border-radius: 60px;
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            backdrop-filter: blur(8px);
+        }
+        
+        /* INFO GRID CINEMATIC */
+        .info-grid-cinematic {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 22px;
+            padding: 28px 45px;
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+            border-top: 1px solid rgba(255,255,255,0.02);
+        }
+        
+        .info-card-cinematic {
+            background: rgba(12, 22, 32, 0.5);
+            backdrop-filter: blur(12px);
+            border-radius: 20px;
+            padding: 18px;
+            border: 1px solid rgba(0, 180, 255, 0.12);
+            transition: all 0.3s ease;
+        }
+        
+        .info-card-cinematic:hover {
+            background: rgba(18, 32, 44, 0.6);
+            border-color: rgba(0, 200, 255, 0.3);
+            transform: translateY(-4px);
+            box-shadow: 0 15px 25px -12px rgba(0,100,255,0.2);
+        }
+        
+        .info-label-cinematic {
+            color: #b0d8ff;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .info-label-cinematic i {
+            color: #4db8ff;
+            text-shadow: 0 0 12px #0066ff;
+        }
+        
+        .info-value-cinematic {
+            color: white;
+            font-size: 20px;
+            font-weight: 700;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        
+        /* ROLE SECTION - CINEMATIC */
+        .role-section-cinematic {
+            padding: 28px 45px;
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+        }
+        
+        .role-header-cinematic {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            color: #d0ecff;
+            font-size: 15px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            margin-bottom: 24px;
+        }
+        
+        .role-header-cinematic i {
+            color: #4db8ff;
+            font-size: 18px;
+            text-shadow: 0 0 20px #0066ff;
+        }
+        
+        .role-cloud-cinematic {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+        
+        .role-cinematic {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 22px;
+            border-radius: 12px;
+            font-size: 15px;
+            font-weight: 600;
+            background: rgba(18, 28, 36, 0.6);
+            backdrop-filter: blur(8px);
+            border-left: 6px solid;
+            transition: all 0.25s cubic-bezier(0.2, 0.9, 0.4, 1);
+            box-shadow: 0 8px 16px -8px rgba(0,0,0,0.4);
+        }
+        
+        .role-cinematic:hover {
+            transform: translateY(-5px) scale(1.02);
+            filter: brightness(1.3);
+            box-shadow: 0 15px 25px -10px rgba(0,0,0,0.6);
+        }
+        
+        /* CONNECTIONS CINEMATIC */
+        .connections-cinematic {
+            padding: 28px 45px;
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+        }
+        
+        .connections-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            color: #d0ecff;
+            font-size: 15px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            margin-bottom: 24px;
+        }
+        
+        .connections-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        
+        .connection-cinematic {
+            display: flex;
+            align-items: center;
+            padding: 16px 24px;
+            background: rgba(12, 22, 32, 0.5);
+            backdrop-filter: blur(12px);
+            border-radius: 24px;
+            text-decoration: none;
+            color: white;
+            border: 1px solid rgba(255,255,255,0.03);
+            transition: all 0.3s ease;
+        }
+        
+        .connection-cinematic:hover {
+            background: rgba(20, 36, 48, 0.7);
+            border-color: rgba(0, 180, 255, 0.4);
+            transform: translateX(12px);
+            box-shadow: 0 12px 28px -12px rgba(0,100,255,0.3);
+        }
+        
+        .connection-icon-cinematic {
+            width: 52px;
+            height: 52px;
+            background: rgba(20, 34, 44, 0.8);
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 22px;
+            color: #4db8ff;
+            font-size: 26px;
+            border: 1px solid rgba(0,180,255,0.2);
+        }
+        
+        /* ===== QRIS SUPER BESAR - 280x280px ===== */
+        .qris-cinematic {
+            margin: 28px 45px;
+            background: linear-gradient(145deg, #0a1c2a, #020e14);
+            border-radius: 36px;
+            padding: 35px;
+            border: 1px solid rgba(0, 200, 255, 0.3);
+            box-shadow: 0 25px 45px -18px rgba(0,150,255,0.2);
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 35px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .qris-aura {
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(0,200,255,0.2) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: auraPulse 6s ease-in-out infinite alternate;
+        }
+        
+        @keyframes auraPulse {
+            0% { opacity: 0.3; transform: scale(1); }
+            100% { opacity: 0.7; transform: scale(1.3); }
+        }
+        
+        .qris-icon-cinematic {
+            width: 90px;
+            height: 90px;
+            background: linear-gradient(145deg, #0066ff, #00ccff);
+            border-radius: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 44px;
+            color: white;
+            box-shadow: 0 20px 35px -10px #0066ff;
+        }
+        
+        .qris-content-cinematic {
+            flex: 1;
+        }
+        
+        .qris-title-cinematic {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-size: 26px;
+            font-weight: 800;
+            margin-bottom: 12px;
+            color: white;
+            font-family: 'Clash Display', sans-serif;
+        }
+        
+        .qris-badge-cinematic {
+            background: rgba(0, 200, 100, 0.18);
+            border: 1.5px solid #00e676;
+            color: #ccffdd;
+            padding: 8px 24px;
+            border-radius: 60px;
+            font-size: 15px;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+        
+        /* QRIS 280x280 - SUPER BESAR! */
+        .qris-wrapper-cinematic {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: white;
+            padding: 25px;
+            border-radius: 32px;
+            box-shadow: 0 30px 50px -15px rgba(0,0,0,0.7);
+            border: 4px solid #0066ff;
+            width: 330px;
+        }
+        
+        .qris-image-cinematic {
+            width: 280px;
+            height: 280px;
+            background-image: url('https://i.postimg.cc/Zq13y754/QRIS.png');
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        
+        .qris-caption-cinematic {
+            margin-top: 16px;
+            color: #003366;
+            font-weight: 800;
+            font-size: 16px;
+            letter-spacing: 3px;
+        }
+        
+        .qris-note-cinematic {
+            margin-top: 8px;
+            color: #0066cc;
+            font-size: 13px;
+            font-weight: 600;
+        }
+        
+        /* SKILL & HOBI SECTION - 18 ITEM */
+        .skill-section-cinematic {
+            padding: 28px 45px;
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+        }
+        
+        /* ABOUT CINEMATIC */
+        .about-cinematic {
+            padding: 28px 45px;
+        }
+        
+        .about-card-cinematic {
+            background: linear-gradient(145deg, rgba(12, 28, 38, 0.6), rgba(6, 16, 24, 0.7));
+            backdrop-filter: blur(16px);
+            border-radius: 28px;
+            padding: 30px 35px;
+            border-left: 10px solid #0066ff;
+            box-shadow: 0 20px 35px -15px rgba(0,100,255,0.15);
+        }
+        
+        .about-text-cinematic {
+            font-size: 22px;
+            font-style: italic;
+            color: #e6f7ff;
+            line-height: 1.5;
+            font-weight: 500;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            text-shadow: 0 0 20px rgba(0,180,255,0.2);
+        }
+        
+        /* FOOTER CINEMATIC */
+        .footer-cinematic {
+            padding: 24px 45px;
+            background: rgba(0,0,0,0.25);
+            border-top: 1px solid rgba(255,255,255,0.05);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: #b0d8ff;
+            font-size: 14px;
+            backdrop-filter: blur(8px);
+        }
+        
+        .footer-warning-cinematic {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #ffc0c0;
+            font-weight: 600;
+        }
+        
+        @media (max-width: 750px) {
+            .info-grid-cinematic { grid-template-columns: repeat(2, 1fr); padding: 25px; }
+            .qris-cinematic { flex-direction: column; text-align: center; padding: 25px; }
+            .qris-wrapper-cinematic { width: 100%; max-width: 320px; }
+            .qris-image-cinematic { width: 240px; height: 240px; }
+            .avatar-dimension { margin-left: 25px; flex-wrap: wrap; }
+            .avatar-cinematic { width: 130px; height: 130px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- CINEMATIC BACKGROUND - 5 LAYER MOTION -->
+    <div class="cinematic-bg"></div>
+    <div class="nebula-bg"></div>
+    <div class="aurora-veil"></div>
+    <div class="orb-container" id="orbContainer"></div>
+    <div class="micro-particles" id="microParticles"></div>
+
+    <!-- LOADING SCREEN -->
+    <div class="finn-loading" id="finnLoading">
+        <div class="loading-sigil">
+            <div class="loading-ring"></div>
+            <div class="loading-ring"></div>
+            <div class="loading-ring"></div>
+            <div class="loading-core">F</div>
+        </div>
+        <div class="loading-title">FINN 2334</div>
+        <div class="loading-bar-container">
+            <div class="loading-bar"></div>
+        </div>
+    </div>
+
+    <!-- MAIN PROFILE - CINEMATIC ULTRA -->
+    <div class="cinematic-profile">
+        <!-- BANNER CINEMATIC -->
+        <div class="cinematic-banner">
+            <div class="banner-hologram"></div>
+            <div class="banner-glow"></div>
+            <div class="banner-fade-cinematic"></div>
+        </div>
+        
+        <!-- AVATAR SECTION - LINK BARU -->
+        <div class="avatar-dimension">
+            <div class="avatar-cinematic">
+                <div class="avatar-crystal"></div>
+                <div class="avatar-image-cinematic"></div>
+                <div class="status-cinematic"></div>
+            </div>
+            <div class="user-info-cinematic">
+                <div class="name-cinematic">
+                    <span class="global-name-cinematic">finn 2334</span>
+                    <span class="verified-cinematic"><i class="fas fa-check"></i></span>
+                    <span class="badge-origin-cinematic">
+                        <i class="fas fa-crown"></i> ORIGINAL
+                    </span>
+                </div>
+                <div class="username-cinematic">
+                    <span><i class="fas fa-at"></i> hay.finzyy</span>
+                    <span class="clone-cinematic">
+                        <i class="fas fa-exclamation-triangle"></i> SELAIN INI CLONE
+                    </span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- INFO GRID CINEMATIC -->
+        <div class="info-grid-cinematic">
+            <div class="info-card-cinematic">
+                <div class="info-label-cinematic"><i class="fas fa-user"></i> PANGGILAN</div>
+                <div class="info-value-cinematic">finn</div>
+            </div>
+            <div class="info-card-cinematic">
+                <div class="info-label-cinematic"><i class="fas fa-venus-mars"></i> GENDER</div>
+                <div class="info-value-cinematic">Laki-laki</div>
+            </div>
+            <div class="info-card-cinematic">
+                <div class="info-label-cinematic"><i class="fas fa-mosque"></i> AGAMA</div>
+                <div class="info-value-cinematic">Islam</div>
+            </div>
+            <div class="info-card-cinematic">
+                <div class="info-label-cinematic"><i class="fas fa-heart"></i> STATUS</div>
+                <div class="info-value-cinematic">•••••••</div>
+            </div>
+        </div>
+        
+        <!-- CUSTOM ROLES - 10 ROLES -->
+        <div class="role-section-cinematic">
+            <div class="role-header-cinematic">
+                <i class="fas fa-badge"></i> CUSTOM ROLES — ORIGINAL (10)
+            </div>
+            <div class="role-cloud-cinematic">
+                <span class="role-cinematic" style="border-left-color: #ffd700;"><i class="fas fa-crown"></i> VOID OWNER</span>
+                <span class="role-cinematic" style="border-left-color: #0066ff;"><i class="fas fa-code"></i> SYSTEM ARCHITECT</span>
+                <span class="role-cinematic" style="border-left-color: #b300ff;"><i class="fas fa-gem"></i> ORIGINAL MEMBER</span>
+                <span class="role-cinematic" style="border-left-color: #00cc88;"><i class="fas fa-shield"></i> ELITE GUARD</span>
+                <span class="role-cinematic" style="border-left-color: #ff73fa;"><i class="fas fa-bolt"></i> NGEHEK LORD</span>
+                <span class="role-cinematic" style="border-left-color: #708090;"><i class="fas fa-moon"></i> SHADOW CORE</span>
+                <span class="role-cinematic" style="border-left-color: #cd7f32;"><i class="fas fa-trophy"></i> LEGACY 2334</span>
+                <span class="role-cinematic" style="border-left-color: #ff4500;"><i class="fas fa-star"></i> ALPHA TESTER</span>
+                <span class="role-cinematic" style="border-left-color: #4b0082;"><i class="fas fa-circle"></i> VOID WALKER</span>
+                <span class="role-cinematic" style="border-left-color: #dc143c;"><i class="fas fa-crown"></i> ORIGINAL GANG</span>
+            </div>
+        </div>
+        
+        <!-- CONNECTIONS -->
+        <div class="connections-cinematic">
+            <div class="connections-header">
+                <i class="fas fa-link"></i> KONTAK ORIGINAL
+            </div>
+            <div class="connections-grid">
+                <a href="https://instagram.com/hay.finzyy" target="_blank" class="connection-cinematic">
+                    <div class="connection-icon-cinematic"><i class="fab fa-instagram"></i></div>
+                    <div class="connection-info">
+                        <div style="font-weight: 700; font-size: 18px; margin-bottom: 4px;">@hay.finzyy</div>
+                        <div style="color: #aad0ff; font-size: 14px;">INSTAGRAM</div>
+                    </div>
+                    <div style="margin-left: auto; color: #00e676;"><i class="fas fa-check-circle fa-lg"></i></div>
+                </a>
+                <a href="https://wa.me/6285867662334" target="_blank" class="connection-cinematic">
+                    <div class="connection-icon-cinematic"><i class="fab fa-whatsapp"></i></div>
+                    <div class="connection-info">
+                        <div style="font-weight: 700; font-size: 18px; margin-bottom: 4px;">085867662334</div>
+                        <div style="color: #aad0ff; font-size: 14px;">WHATSAPP</div>
+                    </div>
+                    <div style="margin-left: auto; color: #00e676;"><i class="fas fa-check-circle fa-lg"></i></div>
+                </a>
+                <a href="mailto:finntzy2334@gmail.com" class="connection-cinematic">
+                    <div class="connection-icon-cinematic"><i class="far fa-envelope"></i></div>
+                    <div class="connection-info">
+                        <div style="font-weight: 700; font-size: 18px; margin-bottom: 4px;">finntzy2334@gmail.com</div>
+                        <div style="color: #aad0ff; font-size: 14px;">EMAIL</div>
+                    </div>
+                    <div style="margin-left: auto; color: #00e676;"><i class="fas fa-check-circle fa-lg"></i></div>
+                </a>
+            </div>
+        </div>
+        
+        <!-- ===== QRIS SUPER BESAR - 280x280px ===== -->
+        <div class="qris-cinematic">
+            <div class="qris-aura"></div>
+            <div class="qris-icon-cinematic">
+                <i class="fas fa-qrcode"></i>
+            </div>
+            <div class="qris-content-cinematic">
+                <div class="qris-title-cinematic">
+                    <i class="fas fa-coins" style="color: #ffd700;"></i> PEMBAYARAN ITEM
+                    <span class="qris-badge-cinematic"><i class="fas fa-bolt"></i> 280x280</span>
+                </div>
+                <div style="color: #c0e8ff; font-size: 17px; margin-bottom: 8px;">
+                    QRIS ukuran super besar • scan dalam 1 detik
+                </div>
+                <div style="color: #90b0c0; font-size: 15px;">
+                    All payment • 24/7 • Fast response • Ready stock
+                </div>
+            </div>
+            <div class="qris-wrapper-cinematic">
+                <div class="qris-image-cinematic"></div>
+                <div class="qris-caption-cinematic">QRIS • finn 2334</div>
+                <div class="qris-note-cinematic">Scan with camera • 280x280</div>
+            </div>
+        </div>
+        
+        <!-- ===== SKILL & HOBI - 18 ITEM ===== -->
+        <div class="skill-section-cinematic">
+            <div class="role-header-cinematic">
+                <i class="fas fa-code"></i> SKILL & KOMPETENSI — 8 ITEM
+            </div>
+            <div class="role-cloud-cinematic">
+                <span class="role-cinematic" style="border-left-color: #ffaa33;"><i class="fas fa-puzzle-piece"></i> problem solver</span>
+                <span class="role-cinematic" style="border-left-color: #33aaff;"><i class="fas fa-graduation-cap"></i> fast learner</span>
+                <span class="role-cinematic" style="border-left-color: #aa66ff;"><i class="fas fa-microchip"></i> tech-adaptive</span>
+                <span class="role-cinematic" style="border-left-color: #ff5555;"><i class="fas fa-skull"></i> ngehek</span>
+                <span class="role-cinematic" style="border-left-color: #ff8800;"><i class="fas fa-brain"></i> critical thinking</span>
+                <span class="role-cinematic" style="border-left-color: #00ccaa;"><i class="fas fa-users"></i> team leadership</span>
+                <span class="role-cinematic" style="border-left-color: #9966ff;"><i class="fas fa-robot"></i> AI prompting</span>
+                <span class="role-cinematic" style="border-left-color: #ff66aa;"><i class="fas fa-paint-brush"></i> creative design</span>
+            </div>
+        </div>
+        
+        <div class="skill-section-cinematic" style="border-bottom: none; padding-top: 0;">
+            <div class="role-header-cinematic">
+                <i class="fas fa-headphones"></i> HOBI & INTERES — 10 ITEM
+            </div>
+            <div class="role-cloud-cinematic">
+                <span class="role-cinematic" style="border-left-color: #66cc99;"><i class="fas fa-flask"></i> eksplor teknologi</span>
+                <span class="role-cinematic" style="border-left-color: #ff99cc;"><i class="fas fa-chess-queen"></i> strategi game</span>
+                <span class="role-cinematic" style="border-left-color: #ffaa00;"><i class="fas fa-cogs"></i> ngulik sistem</span>
+                <span class="role-cinematic" style="border-left-color: #1db954;"><i class="fab fa-spotify"></i> dengerin spotify</span>
+                <span class="role-cinematic" style="border-left-color: #ff3366;"><i class="fas fa-film"></i> nonton anime</span>
+                <span class="role-cinematic" style="border-left-color: #33cc99;"><i class="fas fa-camera"></i> fotografi</span>
+                <span class="role-cinematic" style="border-left-color: #9966cc;"><i class="fas fa-music"></i> bikin playlist</span>
+                <span class="role-cinematic" style="border-left-color: #ff9933;"><i class="fas fa-book"></i> baca artikel</span>
+                <span class="role-cinematic" style="border-left-color: #00ccff;"><i class="fas fa-cloud-moon"></i> ngoding santuy</span>
+                <span class="role-cinematic" style="border-left-color: #cc66ff;"><i class="fas fa-dragon"></i> fantasy world</span>
+            </div>
+        </div>
+        
+        <!-- ABOUT ME CINEMATIC -->
+        <div class="about-cinematic">
+            <div class="about-card-cinematic">
+                <div class="about-text-cinematic">
+                    every end is only the beginning of another path.
+                </div>
+            </div>
+        </div>
+        
+        <!-- FOOTER CINEMATIC -->
+        <div class="footer-cinematic">
+            <div>
+                <i class="fas fa-shield" style="color: #4db8ff;"></i> ORIGINAL SINCE 2025
+            </div>
+            <div class="footer-warning-cinematic">
+                <i class="fas fa-exclamation-triangle"></i> SELAIN INI CLONE
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // LOADING SCREEN
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                document.getElementById('finnLoading').classList.add('hidden');
+            }, 2400);
+        });
+        
+        // CINEMATIC ORBS
+        (function() {
+            const orbContainer = document.getElementById('orbContainer');
+            for (let i = 0; i < 12; i++) {
+                const orb = document.createElement('div');
+                orb.className = 'orb';
+                orb.style.width = (Math.random() * 300 + 150) + 'px';
+                orb.style.height = orb.style.width;
+                orb.style.left = Math.random() * 100 + '%';
+                orb.style.top = Math.random() * 100 + '%';
+                orb.style.animationDelay = Math.random() * 10 + 's';
+                orb.style.animationDuration = (Math.random() * 15 + 20) + 's';
+                orbContainer.appendChild(orb);
+            }
+        })();
+        
+        // MICRO PARTICLES
+        (function() {
+            const particles = document.getElementById('microParticles');
+            for (let i = 0; i < 80; i++) {
+                const p = document.createElement('div');
+                p.className = 'microparticle';
+                p.style.left = Math.random() * 100 + '%';
+                p.style.top = Math.random() * 100 + '%';
+                p.style.animationDelay = Math.random() * 15 + 's';
+                p.style.animationDuration = (Math.random() * 15 + 15) + 's';
+                p.style.width = (Math.random() * 4 + 1) + 'px';
+                p.style.height = p.style.width;
+                particles.appendChild(p);
+            }
+        })();
+    </script>
+</body>
+</html>
