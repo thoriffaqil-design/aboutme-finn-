@@ -9,36 +9,37 @@
     <!-- Google Fonts Premium -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Clash+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* ===== CINEMATIC BACKGROUND - 5 LAYER MOTION ===== */
-        @keyframes gradientOrbit {
+        /* ===== SMOOTH METEOR SHOWER - SUPER LEMBUT ===== */
+        @keyframes meteorFallSmooth {
+            0% { transform: translateY(-20%) translateX(0) rotate(42deg); opacity: 0; }
+            10% { opacity: 0.6; }
+            70% { opacity: 0.4; }
+            100% { transform: translateY(120vh) translateX(100px) rotate(42deg); opacity: 0; }
+        }
+        
+        @keyframes meteorFallReverseSmooth {
+            0% { transform: translateY(-20%) translateX(0) rotate(-42deg); opacity: 0; }
+            10% { opacity: 0.5; }
+            70% { opacity: 0.35; }
+            100% { transform: translateY(120vh) translateX(-100px) rotate(-42deg); opacity: 0; }
+        }
+        
+        @keyframes starGlow {
+            0%, 100% { opacity: 0.15; transform: scale(1); }
+            50% { opacity: 0.35; transform: scale(1.1); }
+        }
+        
+        @keyframes nebulaDrift {
             0% { background-position: 0% 0%; }
-            50% { background-position: 100% 100%; }
+            50% { background-position: 70% 60%; }
             100% { background-position: 0% 0%; }
-        }
-        
-        @keyframes floatSoft {
-            0% { transform: translateY(0) translateX(0); }
-            50% { transform: translateY(-20px) translateX(10px); }
-            100% { transform: translateY(0) translateX(0); }
-        }
-        
-        @keyframes glowPulse {
-            0% { opacity: 0.3; filter: blur(40px); }
-            50% { opacity: 0.6; filter: blur(60px); }
-            100% { opacity: 0.3; filter: blur(40px); }
-        }
-        
-        @keyframes waveFlow {
-            0% { transform: translateX(0) translateY(0); }
-            50% { transform: translateX(-15%) translateY(2px); }
-            100% { transform: translateX(-30%) translateY(0); }
         }
         
         body {
             margin: 0;
             padding: 0;
             font-family: 'Inter', sans-serif;
-            background: #03080e;
+            background: #02060a;
             color: #fff;
             display: flex;
             justify-content: center;
@@ -48,53 +49,57 @@
             overflow-x: hidden;
         }
         
-        /* LAYER 1: DEEP SPACE BASE */
-        .cinematic-bg {
+        /* LAYER 1: DEEP SPACE - SMOOTH */
+        .space-deep {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(ellipse at 40% 50%, #00101f, #00050a);
+            background: radial-gradient(ellipse at 40% 50%, #000c16, #010408);
             z-index: -5;
         }
         
-        /* LAYER 2: NEBULA ORBIT - BERGERAK LAMBAT */
-        .nebula-bg {
+        /* LAYER 2: NEBULA LEMBUT BANGET */
+        .nebula-soft {
             position: fixed;
-            top: -20%;
+            top: -30%;
             left: -20%;
-            width: 140%;
-            height: 140%;
+            width: 150%;
+            height: 150%;
             background: 
-                radial-gradient(circle at 20% 30%, rgba(0, 150, 255, 0.12) 0%, transparent 35%),
-                radial-gradient(circle at 80% 70%, rgba(0, 100, 220, 0.1) 0%, transparent 40%),
-                radial-gradient(circle at 40% 80%, rgba(0, 200, 255, 0.09) 0%, transparent 45%),
-                radial-gradient(circle at 70% 20%, rgba(0, 120, 255, 0.11) 0%, transparent 38%);
-            animation: gradientOrbit 35s ease infinite;
+                radial-gradient(circle at 20% 35%, rgba(0, 140, 220, 0.04) 0%, transparent 55%),
+                radial-gradient(circle at 80% 65%, rgba(0, 100, 200, 0.035) 0%, transparent 60%),
+                radial-gradient(circle at 45% 75%, rgba(0, 180, 240, 0.03) 0%, transparent 65%);
+            animation: nebulaDrift 80s ease infinite;
             z-index: -4;
         }
         
-        /* LAYER 3: AURORA VEIL - TRANSPARAN BERKILAU */
-        .aurora-veil {
+        /* LAYER 3: BINTANG LEMBUT */
+        .stars-soft {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: repeating-linear-gradient(45deg, 
-                rgba(0,180,255,0.02) 0px, 
-                rgba(0,120,255,0.01) 20px, 
-                rgba(0,200,255,0.02) 40px,
-                transparent 60px);
-            background-size: 400% 400%;
-            animation: gradientOrbit 25s ease infinite reverse;
+            background-image: 
+                radial-gradient(1.2px 1.2px at 25px 90px, rgba(255,255,255,0.3), rgba(0,0,0,0)),
+                radial-gradient(1px 1px at 140px 260px, rgba(255,255,255,0.25), rgba(0,0,0,0)),
+                radial-gradient(1.1px 1.1px at 320px 180px, rgba(255,255,255,0.28), rgba(0,0,0,0)),
+                radial-gradient(1.3px 1.3px at 580px 430px, rgba(255,255,255,0.3), rgba(0,0,0,0)),
+                radial-gradient(1px 1px at 750px 620px, rgba(255,255,255,0.25), rgba(0,0,0,0)),
+                radial-gradient(1.4px 1.4px at 230px 720px, rgba(255,255,255,0.28), rgba(0,0,0,0)),
+                radial-gradient(1px 1px at 880px 340px, rgba(255,255,255,0.23), rgba(0,0,0,0)),
+                radial-gradient(1.2px 1.2px at 950px 550px, rgba(255,255,255,0.26), rgba(0,0,0,0));
+            background-repeat: repeat;
+            background-size: 250px 250px;
+            opacity: 0.5;
             z-index: -3;
-            opacity: 0.4;
+            animation: starGlow 8s ease-in-out infinite;
         }
         
-        /* LAYER 4: FLOATING ORBS */
-        .orb-container {
+        /* LAYER 4: METEOR SHOWER - SUPER SMOOTH */
+        .meteor-field {
             position: fixed;
             top: 0;
             left: 0;
@@ -104,16 +109,38 @@
             pointer-events: none;
         }
         
-        .orb {
+        .meteor-smooth {
             position: absolute;
-            border-radius: 50%;
-            background: radial-gradient(circle at 30% 30%, rgba(0,200,255,0.1), rgba(0,100,255,0.02));
-            filter: blur(30px);
-            animation: floatSoft 20s infinite alternate;
+            width: 140px;
+            height: 1.2px;
+            background: linear-gradient(90deg, rgba(200, 235, 255, 0.7), rgba(120, 190, 255, 0.25), transparent);
+            border-radius: 100%;
+            filter: blur(1.2px);
+            transform: rotate(42deg);
+            animation: meteorFallSmooth 12s linear infinite;
+            box-shadow: 0 0 25px rgba(100, 190, 255, 0.2);
         }
         
-        /* LAYER 5: MICRO PARTICLES - BERGERAK HALUS */
-        .micro-particles {
+        .meteor-smooth::after {
+            content: '';
+            position: absolute;
+            top: -3px;
+            right: 0;
+            width: 7px;
+            height: 7px;
+            background: radial-gradient(circle, rgba(230, 245, 255, 0.9), rgba(160, 210, 255, 0.5));
+            border-radius: 50%;
+            box-shadow: 0 0 20px rgba(200, 230, 255, 0.5);
+        }
+        
+        .meteor-smooth-reverse {
+            transform: rotate(-42deg);
+            background: linear-gradient(-90deg, rgba(180, 225, 255, 0.65), rgba(100, 170, 255, 0.2), transparent);
+            animation: meteorFallReverseSmooth 14s linear infinite;
+        }
+        
+        /* LAYER 5: DUST HALUS */
+        .dust-soft {
             position: fixed;
             top: 0;
             left: 0;
@@ -123,24 +150,24 @@
             pointer-events: none;
         }
         
-        .microparticle {
+        .dust-particle-soft {
             position: absolute;
-            width: 2px;
-            height: 2px;
-            background: rgba(100, 200, 255, 0.25);
+            width: 1.2px;
+            height: 1.2px;
+            background: rgba(150, 210, 255, 0.12);
             border-radius: 50%;
-            box-shadow: 0 0 8px rgba(0,180,255,0.3);
-            animation: floatParticle 18s infinite linear;
+            box-shadow: 0 0 5px rgba(100, 180, 255, 0.1);
+            animation: dustFloat 20s infinite linear;
         }
         
-        @keyframes floatParticle {
+        @keyframes dustFloat {
             0% { transform: translateY(0) translateX(0); opacity: 0; }
-            10% { opacity: 0.5; }
-            90% { opacity: 0.3; }
-            100% { transform: translateY(-100vh) translateX(20px); opacity: 0; }
+            20% { opacity: 0.2; }
+            80% { opacity: 0.15; }
+            100% { transform: translateY(-120vh) translateX(40px); opacity: 0; }
         }
         
-        /* ===== LOADING SCREEN PREMIUM ===== */
+        /* ===== LOADING SCREEN - METEOR LEMBUT ===== */
         .finn-loading {
             position: fixed;
             top: 0;
@@ -153,7 +180,7 @@
             align-items: center;
             flex-direction: column;
             z-index: 9999;
-            transition: opacity 1s ease, visibility 1s ease;
+            transition: opacity 1.2s ease, visibility 1.2s ease;
             font-family: 'Clash Display', sans-serif;
         }
         
@@ -162,107 +189,66 @@
             visibility: hidden;
         }
         
-        .loading-sigil {
-            width: 140px;
-            height: 140px;
+        .loading-meteor {
             position: relative;
-            margin-bottom: 40px;
+            width: 150px;
+            height: 150px;
+            margin-bottom: 30px;
         }
         
-        .loading-ring {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: 2px solid rgba(0, 180, 255, 0.2);
-            border-radius: 50%;
-            animation: loadingSpin 12s linear infinite;
-        }
-        
-        .loading-ring:nth-child(2) {
-            width: 80%;
-            height: 80%;
-            top: 10%;
-            left: 10%;
-            border-color: rgba(0, 140, 255, 0.3);
-            border-width: 1.5px;
-            animation: loadingSpinReverse 15s linear infinite;
-        }
-        
-        .loading-ring:nth-child(3) {
-            width: 60%;
-            height: 60%;
-            top: 20%;
-            left: 20%;
-            border-color: rgba(64, 224, 255, 0.4);
-            border-width: 1px;
-            border-style: dashed;
-            animation: loadingSpin 20s linear infinite;
-        }
-        
-        .loading-core {
+        .loading-meteor i {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(145deg, #0066ff, #00ccff);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 32px;
-            font-weight: 800;
-            box-shadow: 0 0 50px #0066ff;
-            animation: corePulse 2s ease-in-out infinite alternate;
+            font-size: 65px;
+            color: rgba(100, 200, 255, 0.5);
+            text-shadow: 0 0 30px rgba(0,160,255,0.3);
+            animation: meteorSpin 16s linear infinite;
         }
         
-        @keyframes loadingSpin {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
+        .loading-meteor i:nth-child(2) {
+            font-size: 50px;
+            opacity: 0.4;
+            animation: meteorSpinReverse 20s linear infinite;
         }
         
-        @keyframes loadingSpinReverse {
-            from { transform: rotate(360deg); }
-            to { transform: rotate(0deg); }
+        @keyframes meteorSpin {
+            from { transform: translate(-50%, -50%) rotate(0deg); }
+            to { transform: translate(-50%, -50%) rotate(360deg); }
         }
         
-        @keyframes corePulse {
-            0% { transform: translate(-50%, -50%) scale(1); box-shadow: 0 0 40px #0066ff; }
-            100% { transform: translate(-50%, -50%) scale(1.15); box-shadow: 0 0 80px #00ccff; }
+        @keyframes meteorSpinReverse {
+            from { transform: translate(-50%, -50%) rotate(360deg); }
+            to { transform: translate(-50%, -50%) rotate(0deg); }
         }
         
         .loading-title {
             color: white;
-            font-size: 40px;
+            font-size: 38px;
             font-weight: 700;
-            margin-bottom: 24px;
+            margin-bottom: 20px;
             letter-spacing: 6px;
-            background: linear-gradient(145deg, #ffffff, #c0f0ff);
+            background: linear-gradient(145deg, #ffffff, #d0f0ff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            font-family: 'Clash Display', sans-serif;
+            opacity: 0.9;
         }
         
         .loading-bar-container {
-            width: 340px;
-            height: 6px;
-            background: rgba(255,255,255,0.03);
-            border-radius: 6px;
-            border: 1px solid rgba(0,200,255,0.2);
+            width: 330px;
+            height: 4px;
+            background: rgba(255,255,255,0.02);
+            border-radius: 4px;
+            border: 0.5px solid rgba(0,200,255,0.1);
             overflow: hidden;
-            backdrop-filter: blur(4px);
         }
         
         .loading-bar {
             width: 0%;
             height: 100%;
-            background: linear-gradient(90deg, #0066ff, #00ddff, #9900ff, #0066ff);
-            background-size: 300% 100%;
-            animation: loadingProgress 2.4s forwards, shimmer 3s linear infinite;
+            background: linear-gradient(90deg, #0066ff, #00aaff);
+            animation: loadingProgress 2.5s forwards;
         }
         
         @keyframes loadingProgress {
@@ -270,181 +256,150 @@
             100% { width: 100%; }
         }
         
-        @keyframes shimmer {
-            0% { background-position: 0% 0; }
-            100% { background-position: 300% 0; }
-        }
-        
-        /* ===== PROFILE CARD - CINEMATIC ULTRA ===== */
-        .cinematic-profile {
-            max-width: 880px;
+        /* ===== PROFILE CARD - SUPER SMOOTH ===== */
+        .profile-smooth {
+            max-width: 1000px;
             width: 100%;
-            background: rgba(8, 14, 22, 0.68);
-            backdrop-filter: blur(35px);
-            -webkit-backdrop-filter: blur(35px);
-            border: 1.5px solid rgba(0, 180, 255, 0.25);
-            border-radius: 48px;
-            box-shadow: 0 50px 90px -30px rgba(0,0,0,0.9), 0 0 0 1px rgba(0,200,255,0.08) inset;
+            background: rgba(12, 18, 26, 0.6);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border: 1px solid rgba(0, 180, 255, 0.15);
+            border-radius: 52px;
+            box-shadow: 0 45px 80px -35px rgba(0,0,0,0.7);
             position: relative;
             z-index: 30;
             overflow: hidden;
-            animation: cinematicFadeIn 1s ease;
+            animation: fadeInSmooth 1.2s ease;
         }
         
-        @keyframes cinematicFadeIn {
-            from { opacity: 0; transform: translateY(40px) scale(0.98); }
+        @keyframes fadeInSmooth {
+            from { opacity: 0; transform: translateY(35px) scale(0.98); }
             to { opacity: 1; transform: translateY(0) scale(1); }
         }
         
-        /* BANNER CINEMATIC */
-        .cinematic-banner {
+        /* BANNER SMOOTH */
+        .banner-smooth {
             width: 100%;
             height: 200px;
-            background: linear-gradient(145deg, #002b4c, #001a2e, #001524);
+            background: linear-gradient(145deg, #001c32, #00121f);
             position: relative;
             overflow: hidden;
         }
         
-        .banner-hologram {
+        .banner-stars {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M10 20 L90 20 M20 10 L20 90 M30 30 L70 70 M70 30 L30 70" stroke="rgba(0,200,255,0.06)" stroke-width="0.8"/><circle cx="50" cy="50" r="3" fill="rgba(255,255,255,0.08)"/><circle cx="80" cy="30" r="2" fill="rgba(0,200,255,0.08)"/></svg>');
-            background-size: 60px 60px;
-            opacity: 0.4;
-            animation: bannerDrift 50s linear infinite;
+            background-image: url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="15" cy="25" r="1" fill="rgba(255,255,255,0.2)"/><circle cx="75" cy="45" r="1.2" fill="rgba(200,230,255,0.2)"/><circle cx="45" cy="80" r="1" fill="rgba(255,255,255,0.18)"/><path d="M20 15 L25 20 M80 70 L85 75" stroke="rgba(100,200,255,0.06)" stroke-width="0.6"/></svg>');
+            background-size: 70px 70px;
+            opacity: 0.25;
+            animation: bannerDriftSmooth 90s linear infinite;
         }
         
-        @keyframes bannerDrift {
+        @keyframes bannerDriftSmooth {
             0% { background-position: 0 0; }
-            100% { background-position: 100px 100px; }
+            100% { background-position: 120px 120px; }
         }
         
-        .banner-glow {
-            position: absolute;
-            top: -50%;
-            left: -20%;
-            width: 140%;
-            height: 200%;
-            background: radial-gradient(ellipse at center, rgba(0,150,255,0.15) 0%, transparent 70%);
-            animation: glowPulse 8s ease-in-out infinite;
-            pointer-events: none;
-        }
-        
-        .banner-fade-cinematic {
+        .banner-fade-smooth {
             position: absolute;
             bottom: 0;
             left: 0;
             width: 100%;
-            height: 120px;
-            background: linear-gradient(to top, rgba(8,14,22,0.95), transparent);
+            height: 110px;
+            background: linear-gradient(to top, rgba(12,18,26,0.92), transparent);
         }
         
-        /* AVATAR SECTION - DIMENSION */
-        .avatar-dimension {
+        /* AVATAR - HALUS */
+        .avatar-smooth {
             position: relative;
-            margin-top: -80px;
-            margin-left: 45px;
+            margin-top: -78px;
+            margin-left: 48px;
             display: flex;
             align-items: flex-end;
-            gap: 30px;
-            margin-bottom: 25px;
+            gap: 32px;
+            margin-bottom: 28px;
         }
         
-        .avatar-cinematic {
+        .avatar-frame-smooth {
             position: relative;
             width: 150px;
             height: 150px;
-            border-radius: 40px;
+            border-radius: 42px;
             background: #0e1a24;
             display: flex;
             align-items: center;
             justify-content: center;
-            border: 6px solid rgba(8, 14, 22, 0.95);
-            backdrop-filter: blur(8px);
-            box-shadow: 0 25px 45px -15px rgba(0,0,0,0.7);
+            border: 6px solid rgba(12, 18, 26, 0.9);
+            box-shadow: 0 25px 40px -15px rgba(0,0,0,0.6);
         }
         
-        .avatar-crystal {
+        .avatar-glow-smooth {
             position: absolute;
-            top: -8px;
-            left: -8px;
-            right: -8px;
-            bottom: -8px;
-            border-radius: 46px;
-            background: linear-gradient(145deg, #0066ff, #00ccff, #9900ff);
-            opacity: 0.3;
-            filter: blur(18px);
+            top: -6px;
+            left: -6px;
+            right: -6px;
+            bottom: -6px;
+            border-radius: 48px;
+            background: linear-gradient(145deg, rgba(0,102,255,0.12), rgba(0,170,255,0.12));
+            filter: blur(12px);
             z-index: -1;
-            animation: crystalBreath 5s ease-in-out infinite alternate;
         }
         
-        @keyframes crystalBreath {
-            0% { opacity: 0.2; filter: blur(15px); }
-            100% { opacity: 0.5; filter: blur(25px); }
-        }
-        
-        .avatar-image-cinematic {
+        .avatar-img-smooth {
             width: 100%;
             height: 100%;
             background-image: url('https://i.postimg.cc/jSD4wJ4P/Screenshot-20260212-200121-Whats-App-Business.png');
             background-size: cover;
             background-position: center;
-            border-radius: 34px;
-            border: 2px solid rgba(255,255,255,0.9);
-            transition: transform 0.4s ease;
+            border-radius: 36px;
+            border: 2px solid rgba(255,255,255,0.85);
+            transition: transform 0.3s ease;
         }
         
-        .avatar-image-cinematic:hover {
-            transform: scale(1.03);
+        .avatar-img-smooth:hover {
+            transform: scale(1.02);
         }
         
-        .status-cinematic {
+        .status-smooth {
             position: absolute;
-            bottom: 10px;
-            right: 10px;
-            width: 28px;
-            height: 28px;
-            background: #00e676;
+            bottom: 12px;
+            right: 12px;
+            width: 26px;
+            height: 26px;
+            background: #2ecc71;
             border-radius: 50%;
-            border: 4px solid rgba(8, 14, 22, 0.95);
-            box-shadow: 0 0 30px #00ffaa;
-            animation: statusGlow 2s ease-in-out infinite alternate;
+            border: 4px solid rgba(12, 18, 26, 0.9);
+            box-shadow: 0 0 20px rgba(46,204,113,0.2);
         }
         
-        @keyframes statusGlow {
-            0% { box-shadow: 0 0 20px #00e676; }
-            100% { box-shadow: 0 0 40px #00ffaa; }
-        }
-        
-        /* USER INFO PREMIUM */
-        .user-info-cinematic {
+        /* USER INFO - HALUS */
+        .user-info-smooth {
             flex: 1;
             padding-bottom: 20px;
         }
         
-        .name-cinematic {
+        .name-row-smooth {
             display: flex;
             align-items: center;
-            gap: 16px;
+            gap: 18px;
             flex-wrap: wrap;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
         
-        .global-name-cinematic {
-            font-size: 44px;
+        .global-name-smooth {
+            font-size: 46px;
             font-weight: 800;
             font-family: 'Clash Display', sans-serif;
-            background: linear-gradient(145deg, #ffffff, #d0f0ff, #a0e0ff);
+            background: linear-gradient(145deg, #ffffff, #d4f0ff, #b0e8ff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            letter-spacing: -1px;
-            text-shadow: 0 0 40px rgba(0,180,255,0.3);
+            letter-spacing: -0.8px;
         }
         
-        .verified-cinematic {
+        .verified-smooth {
             display: flex;
             align-items: center;
             justify-content: center;
@@ -454,204 +409,197 @@
             border-radius: 50%;
             color: white;
             font-size: 20px;
-            box-shadow: 0 0 40px #1a8cff;
-            border: 2px solid rgba(255,255,255,0.6);
+            box-shadow: 0 0 25px rgba(26,140,255,0.2);
+            border: 2px solid rgba(255,255,255,0.5);
         }
         
-        .badge-origin-cinematic {
-            background: rgba(0, 150, 255, 0.15);
-            backdrop-filter: blur(12px);
-            border: 1.8px solid #00aaff;
-            color: #e0f5ff;
-            padding: 8px 26px;
+        .badge-original-smooth {
+            background: rgba(0, 150, 255, 0.1);
+            backdrop-filter: blur(8px);
+            border: 1.5px solid #00aaff;
+            color: #e0f0ff;
+            padding: 7px 26px;
             border-radius: 60px;
             font-size: 15px;
             font-weight: 700;
             letter-spacing: 2px;
             display: flex;
             align-items: center;
-            gap: 10px;
-            box-shadow: 0 0 30px rgba(0,170,255,0.2);
+            gap: 8px;
         }
         
-        .username-cinematic {
+        .username-line-smooth {
             display: flex;
             align-items: center;
             gap: 22px;
             flex-wrap: wrap;
-            color: #c0e0ff;
-            font-size: 20px;
-            margin-top: 8px;
+            color: #c0d8e8;
+            font-size: 19px;
         }
         
-        .username-cinematic i {
+        .username-line-smooth i {
             color: #4db8ff;
-            text-shadow: 0 0 15px #0066ff;
         }
         
-        .clone-cinematic {
-            background: rgba(255, 80, 80, 0.1);
-            border: 1px solid rgba(255, 120, 120, 0.5);
+        .clone-warning-smooth {
+            background: rgba(220, 60, 60, 0.07);
+            border: 1px solid rgba(255, 100, 100, 0.25);
             color: #ffd0d0;
-            padding: 6px 24px;
+            padding: 6px 22px;
             border-radius: 60px;
             font-size: 14px;
-            font-weight: 700;
-            letter-spacing: 2px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            backdrop-filter: blur(8px);
-        }
-        
-        /* INFO GRID CINEMATIC */
-        .info-grid-cinematic {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 22px;
-            padding: 28px 45px;
-            border-bottom: 1px solid rgba(255,255,255,0.04);
-            border-top: 1px solid rgba(255,255,255,0.02);
-        }
-        
-        .info-card-cinematic {
-            background: rgba(12, 22, 32, 0.5);
-            backdrop-filter: blur(12px);
-            border-radius: 20px;
-            padding: 18px;
-            border: 1px solid rgba(0, 180, 255, 0.12);
-            transition: all 0.3s ease;
-        }
-        
-        .info-card-cinematic:hover {
-            background: rgba(18, 32, 44, 0.6);
-            border-color: rgba(0, 200, 255, 0.3);
-            transform: translateY(-4px);
-            box-shadow: 0 15px 25px -12px rgba(0,100,255,0.2);
-        }
-        
-        .info-label-cinematic {
-            color: #b0d8ff;
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 10px;
+            font-weight: 600;
+            letter-spacing: 1.8px;
             display: flex;
             align-items: center;
             gap: 8px;
+            backdrop-filter: blur(4px);
         }
         
-        .info-label-cinematic i {
+        /* INFO GRID - HALUS */
+        .info-grid-smooth {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 22px;
+            padding: 28px 48px;
+            border-bottom: 1px solid rgba(255,255,255,0.03);
+            border-top: 1px solid rgba(255,255,255,0.02);
+        }
+        
+        .info-card-smooth {
+            background: rgba(16, 26, 34, 0.35);
+            backdrop-filter: blur(10px);
+            border-radius: 22px;
+            padding: 18px;
+            border: 1px solid rgba(0, 180, 255, 0.08);
+            transition: all 0.2s ease;
+        }
+        
+        .info-card-smooth:hover {
+            background: rgba(22, 34, 44, 0.45);
+            border-color: rgba(0, 200, 255, 0.15);
+            transform: translateY(-3px);
+        }
+        
+        .info-label-smooth {
+            color: #b8d8e8;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 2.2px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .info-label-smooth i {
             color: #4db8ff;
-            text-shadow: 0 0 12px #0066ff;
         }
         
-        .info-value-cinematic {
+        .info-value-smooth {
             color: white;
             font-size: 20px;
             font-weight: 700;
             font-family: 'Plus Jakarta Sans', sans-serif;
         }
         
-        /* ROLE SECTION - CINEMATIC */
-        .role-section-cinematic {
-            padding: 28px 45px;
-            border-bottom: 1px solid rgba(255,255,255,0.04);
+        /* ROLE SECTION - HALUS */
+        .role-section-smooth {
+            padding: 28px 48px;
+            border-bottom: 1px solid rgba(255,255,255,0.03);
         }
         
-        .role-header-cinematic {
+        .role-header-smooth {
             display: flex;
             align-items: center;
             gap: 14px;
-            color: #d0ecff;
+            color: #d0e8f0;
             font-size: 15px;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 2.5px;
+            letter-spacing: 2.2px;
             margin-bottom: 24px;
         }
         
-        .role-header-cinematic i {
+        .role-header-smooth i {
             color: #4db8ff;
-            font-size: 18px;
-            text-shadow: 0 0 20px #0066ff;
+            font-size: 17px;
         }
         
-        .role-cloud-cinematic {
+        .role-cloud-smooth {
             display: flex;
             flex-wrap: wrap;
             gap: 14px;
         }
         
-        .role-cinematic {
+        .role-item-smooth {
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            padding: 10px 22px;
+            padding: 9px 22px;
             border-radius: 12px;
             font-size: 15px;
             font-weight: 600;
-            background: rgba(18, 28, 36, 0.6);
+            background: rgba(20, 30, 38, 0.45);
             backdrop-filter: blur(8px);
             border-left: 6px solid;
-            transition: all 0.25s cubic-bezier(0.2, 0.9, 0.4, 1);
-            box-shadow: 0 8px 16px -8px rgba(0,0,0,0.4);
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 12px -6px rgba(0,0,0,0.2);
         }
         
-        .role-cinematic:hover {
-            transform: translateY(-5px) scale(1.02);
-            filter: brightness(1.3);
-            box-shadow: 0 15px 25px -10px rgba(0,0,0,0.6);
+        .role-item-smooth:hover {
+            transform: translateY(-4px);
+            background: rgba(30, 42, 52, 0.6);
+            box-shadow: 0 10px 20px -10px rgba(0,0,0,0.3);
         }
         
-        /* CONNECTIONS CINEMATIC */
-        .connections-cinematic {
-            padding: 28px 45px;
-            border-bottom: 1px solid rgba(255,255,255,0.04);
+        /* CONNECTIONS - HALUS */
+        .connections-section-smooth {
+            padding: 28px 48px;
+            border-bottom: 1px solid rgba(255,255,255,0.03);
         }
         
-        .connections-header {
+        .connections-header-smooth {
             display: flex;
             align-items: center;
             gap: 14px;
-            color: #d0ecff;
+            color: #d0e8f0;
             font-size: 15px;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 2.5px;
+            letter-spacing: 2.2px;
             margin-bottom: 24px;
         }
         
-        .connections-grid {
+        .connections-list-smooth {
             display: flex;
             flex-direction: column;
             gap: 16px;
         }
         
-        .connection-cinematic {
+        .connection-item-smooth {
             display: flex;
             align-items: center;
             padding: 16px 24px;
-            background: rgba(12, 22, 32, 0.5);
-            backdrop-filter: blur(12px);
+            background: rgba(16, 26, 34, 0.35);
+            backdrop-filter: blur(10px);
             border-radius: 24px;
             text-decoration: none;
             color: white;
-            border: 1px solid rgba(255,255,255,0.03);
-            transition: all 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.02);
+            transition: all 0.25s ease;
         }
         
-        .connection-cinematic:hover {
-            background: rgba(20, 36, 48, 0.7);
-            border-color: rgba(0, 180, 255, 0.4);
-            transform: translateX(12px);
-            box-shadow: 0 12px 28px -12px rgba(0,100,255,0.3);
+        .connection-item-smooth:hover {
+            background: rgba(24, 38, 48, 0.5);
+            border-color: rgba(0, 180, 255, 0.2);
+            transform: translateX(10px);
         }
         
-        .connection-icon-cinematic {
+.connection-icon-smooth {
             width: 52px;
             height: 52px;
-            background: rgba(20, 34, 44, 0.8);
+            background: rgba(22, 34, 44, 0.6);
             border-radius: 18px;
             display: flex;
             align-items: center;
@@ -659,193 +607,252 @@
             margin-right: 22px;
             color: #4db8ff;
             font-size: 26px;
-            border: 1px solid rgba(0,180,255,0.2);
+            border: 1px solid rgba(0,180,255,0.12);
         }
         
-        /* ===== QRIS SUPER BESAR - 280x280px ===== */
-        .qris-cinematic {
-            margin: 28px 45px;
-            background: linear-gradient(145deg, #0a1c2a, #020e14);
-            border-radius: 36px;
+        /* ===== QRIS 450x450 - SUPER GEDE & RAPIH! ===== */
+        .qris-smooth {
+            margin: 28px 48px;
+            background: linear-gradient(145deg, #0a1e2c, #031018);
+            border-radius: 42px;
             padding: 35px;
-            border: 1px solid rgba(0, 200, 255, 0.3);
-            box-shadow: 0 25px 45px -18px rgba(0,150,255,0.2);
+            border: 1px solid rgba(0, 200, 255, 0.18);
             display: flex;
             flex-wrap: wrap;
             align-items: center;
-            gap: 35px;
+            gap: 40px;
             position: relative;
             overflow: hidden;
         }
         
-        .qris-aura {
+        .qris-aura-smooth {
             position: absolute;
-            top: -50px;
-            right: -50px;
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(0,200,255,0.2) 0%, transparent 70%);
+            top: -40px;
+            right: -40px;
+            width: 450px;
+            height: 450px;
+            background: radial-gradient(circle, rgba(0,160,255,0.06) 0%, transparent 70%);
             border-radius: 50%;
-            animation: auraPulse 6s ease-in-out infinite alternate;
         }
         
-        @keyframes auraPulse {
-            0% { opacity: 0.3; transform: scale(1); }
-            100% { opacity: 0.7; transform: scale(1.3); }
-        }
-        
-        .qris-icon-cinematic {
-            width: 90px;
-            height: 90px;
-            background: linear-gradient(145deg, #0066ff, #00ccff);
-            border-radius: 28px;
+        .qris-icon-smooth {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(145deg, #0066ff, #00aaff);
+            border-radius: 30px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 44px;
+            font-size: 48px;
             color: white;
-            box-shadow: 0 20px 35px -10px #0066ff;
+            box-shadow: 0 18px 30px -10px rgba(0,102,255,0.2);
+            flex-shrink: 0;
         }
         
-        .qris-content-cinematic {
+        .qris-content-smooth {
             flex: 1;
+            min-width: 280px;
         }
         
-        .qris-title-cinematic {
+        .qris-title-smooth {
             display: flex;
             align-items: center;
             gap: 16px;
-            font-size: 26px;
+            font-size: 28px;
             font-weight: 800;
-            margin-bottom: 12px;
+            margin-bottom: 16px;
             color: white;
             font-family: 'Clash Display', sans-serif;
+            flex-wrap: wrap;
         }
         
-        .qris-badge-cinematic {
-            background: rgba(0, 200, 100, 0.18);
-            border: 1.5px solid #00e676;
-            color: #ccffdd;
+        .qris-badge-smooth {
+            background: rgba(0, 200, 100, 0.12);
+            border: 1.2px solid #2ecc71;
+            color: #ccf2d9;
             padding: 8px 24px;
             border-radius: 60px;
-            font-size: 15px;
+            font-size: 16px;
             font-weight: 700;
-            letter-spacing: 2px;
         }
         
-        /* QRIS 280x280 - SUPER BESAR! */
-        .qris-wrapper-cinematic {
+        /* QRIS 450x450 - SUPER GEDE BANGET! RAPIH! */
+        .qris-wrapper-smooth {
             display: flex;
             flex-direction: column;
             align-items: center;
             background: white;
-            padding: 25px;
-            border-radius: 32px;
-            box-shadow: 0 30px 50px -15px rgba(0,0,0,0.7);
+            padding: 30px;
+            border-radius: 36px;
+            box-shadow: 0 25px 40px -15px rgba(0,0,0,0.6);
             border: 4px solid #0066ff;
-            width: 330px;
+            width: 520px;
+            flex-shrink: 0;
         }
         
-        .qris-image-cinematic {
-            width: 280px;
-            height: 280px;
+        .qris-image-smooth {
+            width: 450px;
+            height: 450px;
             background-image: url('https://i.postimg.cc/Zq13y754/QRIS.png');
             background-size: contain;
             background-position: center;
             background-repeat: no-repeat;
         }
         
-        .qris-caption-cinematic {
-            margin-top: 16px;
+        .qris-caption-smooth {
+            margin-top: 20px;
             color: #003366;
             font-weight: 800;
-            font-size: 16px;
-            letter-spacing: 3px;
+            font-size: 20px;
+            letter-spacing: 4px;
+            text-align: center;
         }
         
-        .qris-note-cinematic {
+        .qris-note-smooth {
             margin-top: 8px;
             color: #0066cc;
-            font-size: 13px;
+            font-size: 15px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-align: center;
+        }
+        
+        /* QRIS INFO DETAIL - TAMBAHAN DARI BOS! */
+        .qris-info-detail {
+            margin-top: 20px;
+            padding: 20px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 24px;
+            border-left: 6px solid #0066ff;
+            width: 100%;
+        }
+        
+        .qris-merchant {
+            font-size: 22px;
+            font-weight: 800;
+            color: #ffd700;
+            margin-bottom: 8px;
+            font-family: 'Clash Display', sans-serif;
+        }
+        
+        .qris-nmid {
+            font-size: 16px;
+            color: #b0e0ff;
+            margin-bottom: 6px;
             font-weight: 600;
         }
         
-        /* SKILL & HOBI SECTION - 18 ITEM */
-        .skill-section-cinematic {
-            padding: 28px 45px;
-            border-bottom: 1px solid rgba(255,255,255,0.04);
+        .qris-code {
+            font-size: 14px;
+            color: #aad0ff;
+            margin-bottom: 12px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
         }
         
-        /* ABOUT CINEMATIC */
-        .about-cinematic {
-            padding: 28px 45px;
+        .qris-satu-untuk-semua {
+            font-size: 15px;
+            color: #e0f0ff;
+            font-weight: 600;
+            margin-bottom: 6px;
         }
         
-        .about-card-cinematic {
-            background: linear-gradient(145deg, rgba(12, 28, 38, 0.6), rgba(6, 16, 24, 0.7));
-            backdrop-filter: blur(16px);
-            border-radius: 28px;
-            padding: 30px 35px;
+        .qris-aspiris {
+            font-size: 14px;
+            color: #99ccff;
+            margin-bottom: 8px;
+        }
+        
+        .qris-aspiris a {
+            color: #4db8ff;
+            text-decoration: none;
+            border-bottom: 1px dashed #4db8ff;
+        }
+        
+        .qris-aspiris a:hover {
+            color: #aad0ff;
+            border-bottom-color: #aad0ff;
+        }
+        
+        .qris-printed {
+            font-size: 13px;
+            color: #90b0c0;
+            display: flex;
+            justify-content: space-between;
+            margin-top: 8px;
+        }
+        
+        /* SKILL SECTION - HALUS */
+        .skill-section-smooth {
+            padding: 28px 48px;
+            border-bottom: 1px solid rgba(255,255,255,0.03);
+        }
+        
+        /* ABOUT ME - HALUS */
+        .about-section-smooth {
+            padding: 28px 48px;
+        }
+        
+        .about-card-smooth {
+            background: linear-gradient(145deg, rgba(14, 30, 38, 0.45), rgba(10, 20, 26, 0.5));
+            backdrop-filter: blur(14px);
+            border-radius: 32px;
+            padding: 32px 36px;
             border-left: 10px solid #0066ff;
-            box-shadow: 0 20px 35px -15px rgba(0,100,255,0.15);
         }
         
-        .about-text-cinematic {
-            font-size: 22px;
+        .about-text-smooth {
+            font-size: 23px;
             font-style: italic;
-            color: #e6f7ff;
+            color: #e0f2ff;
             line-height: 1.5;
             font-weight: 500;
             font-family: 'Plus Jakarta Sans', sans-serif;
-            text-shadow: 0 0 20px rgba(0,180,255,0.2);
         }
         
-        /* FOOTER CINEMATIC */
-        .footer-cinematic {
-            padding: 24px 45px;
-            background: rgba(0,0,0,0.25);
-            border-top: 1px solid rgba(255,255,255,0.05);
+        /* FOOTER - HALUS */
+        .footer-smooth {
+            padding: 24px 48px;
+            background: rgba(0,0,0,0.2);
+            border-top: 1px solid rgba(255,255,255,0.04);
             display: flex;
             align-items: center;
             justify-content: space-between;
-            color: #b0d8ff;
+            color: #b0d0e0;
             font-size: 14px;
-            backdrop-filter: blur(8px);
+            backdrop-filter: blur(6px);
         }
         
-        .footer-warning-cinematic {
+        .footer-warning-smooth {
             display: flex;
             align-items: center;
             gap: 12px;
-            color: #ffc0c0;
-            font-weight: 600;
-        }
-        
-        @media (max-width: 750px) {
-            .info-grid-cinematic { grid-template-columns: repeat(2, 1fr); padding: 25px; }
-            .qris-cinematic { flex-direction: column; text-align: center; padding: 25px; }
-            .qris-wrapper-cinematic { width: 100%; max-width: 320px; }
-            .qris-image-cinematic { width: 240px; height: 240px; }
-            .avatar-dimension { margin-left: 25px; flex-wrap: wrap; }
-            .avatar-cinematic { width: 130px; height: 130px; }
+            color: #ffc8c8;
+            }
+
+        @media (max-width: 950px) {
+            .info-grid-smooth { grid-template-columns: repeat(2, 1fr); padding: 25px; }
+            .qris-smooth { flex-direction: column; text-align: center; padding: 25px; }
+            .qris-wrapper-smooth { width: 100%; max-width: 450px; }
+            .qris-image-smooth { width: 380px; height: 380px; }
+            .avatar-smooth { margin-left: 25px; flex-wrap: wrap; }
+            .avatar-frame-smooth { width: 135px; height: 135px; }
         }
     </style>
 </head>
 <body>
-    <!-- CINEMATIC BACKGROUND - 5 LAYER MOTION -->
-    <div class="cinematic-bg"></div>
-    <div class="nebula-bg"></div>
-    <div class="aurora-veil"></div>
-    <div class="orb-container" id="orbContainer"></div>
-    <div class="micro-particles" id="microParticles"></div>
+    <!-- SMOOTH METEOR SHOWER BACKGROUND -->
+    <div class="space-deep"></div>
+    <div class="nebula-soft"></div>
+    <div class="stars-soft"></div>
+    <div class="meteor-field" id="meteorField"></div>
+    <div class="dust-soft" id="dustSoft"></div>
 
     <!-- LOADING SCREEN -->
     <div class="finn-loading" id="finnLoading">
-        <div class="loading-sigil">
-            <div class="loading-ring"></div>
-            <div class="loading-ring"></div>
-            <div class="loading-ring"></div>
-            <div class="loading-core">F</div>
+        <div class="loading-meteor">
+            <i class="fas fa-meteor"></i>
+            <i class="fas fa-star"></i>
         </div>
         <div class="loading-title">FINN 2334</div>
         <div class="loading-bar-container">
@@ -853,228 +860,271 @@
         </div>
     </div>
 
-    <!-- MAIN PROFILE - CINEMATIC ULTRA -->
-    <div class="cinematic-profile">
-        <!-- BANNER CINEMATIC -->
-        <div class="cinematic-banner">
-            <div class="banner-hologram"></div>
-            <div class="banner-glow"></div>
-            <div class="banner-fade-cinematic"></div>
+    <!-- MAIN PROFILE - SUPER SMOOTH -->
+    <div class="profile-smooth">
+        <!-- BANNER -->
+        <div class="banner-smooth">
+            <div class="banner-stars"></div>
+            <div class="banner-fade-smooth"></div>
         </div>
         
-        <!-- AVATAR SECTION - LINK BARU -->
-        <div class="avatar-dimension">
-            <div class="avatar-cinematic">
-                <div class="avatar-crystal"></div>
-                <div class="avatar-image-cinematic"></div>
-                <div class="status-cinematic"></div>
+        <!-- AVATAR -->
+        <div class="avatar-smooth">
+            <div class="avatar-frame-smooth">
+                <div class="avatar-glow-smooth"></div>
+                <div class="avatar-img-smooth"></div>
+                <div class="status-smooth"></div>
             </div>
-            <div class="user-info-cinematic">
-                <div class="name-cinematic">
-                    <span class="global-name-cinematic">finn 2334</span>
-                    <span class="verified-cinematic"><i class="fas fa-check"></i></span>
-                    <span class="badge-origin-cinematic">
+            <div class="user-info-smooth">
+                <div class="name-row-smooth">
+                    <span class="global-name-smooth">finn 2334</span>
+                    <span class="verified-smooth"><i class="fas fa-check"></i></span>
+                    <span class="badge-original-smooth">
                         <i class="fas fa-crown"></i> ORIGINAL
                     </span>
                 </div>
-                <div class="username-cinematic">
+                <div class="username-line-smooth">
                     <span><i class="fas fa-at"></i> hay.finzyy</span>
-                    <span class="clone-cinematic">
+                    <span class="clone-warning-smooth">
                         <i class="fas fa-exclamation-triangle"></i> SELAIN INI CLONE
                     </span>
                 </div>
             </div>
         </div>
         
-        <!-- INFO GRID CINEMATIC -->
-        <div class="info-grid-cinematic">
-            <div class="info-card-cinematic">
-                <div class="info-label-cinematic"><i class="fas fa-user"></i> PANGGILAN</div>
-                <div class="info-value-cinematic">finn</div>
+        <!-- INFO GRID -->
+        <div class="info-grid-smooth">
+            <div class="info-card-smooth">
+                <div class="info-label-smooth"><i class="fas fa-user"></i> PANGGILAN</div>
+                <div class="info-value-smooth">finn</div>
             </div>
-            <div class="info-card-cinematic">
-                <div class="info-label-cinematic"><i class="fas fa-venus-mars"></i> GENDER</div>
-                <div class="info-value-cinematic">Laki-laki</div>
+            <div class="info-card-smooth">
+                <div class="info-label-smooth"><i class="fas fa-venus-mars"></i> GENDER</div>
+                <div class="info-value-smooth">Laki-laki</div>
             </div>
-            <div class="info-card-cinematic">
-                <div class="info-label-cinematic"><i class="fas fa-mosque"></i> AGAMA</div>
-                <div class="info-value-cinematic">Islam</div>
+            <div class="info-card-smooth">
+                <div class="info-label-smooth"><i class="fas fa-mosque"></i> AGAMA</div>
+                <div class="info-value-smooth">Islam</div>
             </div>
-            <div class="info-card-cinematic">
-                <div class="info-label-cinematic"><i class="fas fa-heart"></i> STATUS</div>
-                <div class="info-value-cinematic">•••••••</div>
+            <div class="info-card-smooth">
+                <div class="info-label-smooth"><i class="fas fa-heart"></i> STATUS</div>
+                <div class="info-value-smooth">•••••••</div>
             </div>
         </div>
         
-        <!-- CUSTOM ROLES - 10 ROLES -->
-        <div class="role-section-cinematic">
-            <div class="role-header-cinematic">
-                <i class="fas fa-badge"></i> CUSTOM ROLES — ORIGINAL (10)
+        <!-- CUSTOM ROLES - 15 ROLES! -->
+        <div class="role-section-smooth">
+            <div class="role-header-smooth">
+                <i class="fas fa-badge"></i> CUSTOM ROLES
             </div>
-            <div class="role-cloud-cinematic">
-                <span class="role-cinematic" style="border-left-color: #ffd700;"><i class="fas fa-crown"></i> VOID OWNER</span>
-                <span class="role-cinematic" style="border-left-color: #0066ff;"><i class="fas fa-code"></i> SYSTEM ARCHITECT</span>
-                <span class="role-cinematic" style="border-left-color: #b300ff;"><i class="fas fa-gem"></i> ORIGINAL MEMBER</span>
-                <span class="role-cinematic" style="border-left-color: #00cc88;"><i class="fas fa-shield"></i> ELITE GUARD</span>
-                <span class="role-cinematic" style="border-left-color: #ff73fa;"><i class="fas fa-bolt"></i> NGEHEK LORD</span>
-                <span class="role-cinematic" style="border-left-color: #708090;"><i class="fas fa-moon"></i> SHADOW CORE</span>
-                <span class="role-cinematic" style="border-left-color: #cd7f32;"><i class="fas fa-trophy"></i> LEGACY 2334</span>
-                <span class="role-cinematic" style="border-left-color: #ff4500;"><i class="fas fa-star"></i> ALPHA TESTER</span>
-                <span class="role-cinematic" style="border-left-color: #4b0082;"><i class="fas fa-circle"></i> VOID WALKER</span>
-                <span class="role-cinematic" style="border-left-color: #dc143c;"><i class="fas fa-crown"></i> ORIGINAL GANG</span>
+            <div class="role-cloud-smooth">
+                <span class="role-item-smooth" style="border-left-color: #ffd700;"><i class="fas fa-crown"></i> OWNER</span>
+                <span class="role-item-smooth" style="border-left-color: #0066ff;"><i class="fas fa-code"></i> SYSTEM ARCHITECT</span>
+                <span class="role-item-smooth" style="border-left-color: #b300ff;"><i class="fas fa-gem"></i> ORIGINAL</span>
+                <span class="role-item-smooth" style="border-left-color: #00cc88;"><i class="fas fa-shield"></i> ELITE GUARD</span>
+                <span class="role-item-smooth" style="border-left-color: #ff73fa;"><i class="fas fa-bolt"></i> NGEHEKK</span>
+                <span class="role-item-smooth" style="border-left-color: #708090;"><i class="fas fa-moon"></i> SHADOW CORE</span>
+                <span class="role-item-smooth" style="border-left-color: #cd7f32;"><i class="fas fa-trophy"></i> LEGACY 2334</span>
+                <span class="role-item-smooth" style="border-left-color: #ff4500;"><i class="fas fa-star"></i> ALPHA TESTER</span>
+                <span class="role-item-smooth" style="border-left-color: #4b0082;"><i class="fas fa-circle"></i> VOID WALKER</span>
+                <span class="role-item-smooth" style="border-left-color: #ffaa33;"><i class="fas fa-smile"></i> NONCHALANT</span>
+                <span class="role-item-smooth" style="border-left-color: #2ecc71;"><i class="fas fa-leaf"></i> CHILL GUY</span>
+                <span class="role-item-smooth" style="border-left-color: #e67e22;"><i class="fas fa-mug-hot"></i> SANTUY</span>
+                <span class="role-item-smooth" style="border-left-color: #3498db;"><i class="fas fa-laptop-code"></i> SOLO DEVELOPER</span>
+                <span class="role-item-smooth" style="border-left-color: #9b59b6;"><i class="fas fa-flag"></i> FOUNDER</span>
+                <span class="role-item-smooth" style="border-left-color: #e74c3c;"><i class="fas fa-gavel"></i> MODERATOR</span>
             </div>
         </div>
         
         <!-- CONNECTIONS -->
-        <div class="connections-cinematic">
-            <div class="connections-header">
+        <div class="connections-section-smooth">
+            <div class="connections-header-smooth">
                 <i class="fas fa-link"></i> KONTAK ORIGINAL
             </div>
-            <div class="connections-grid">
-                <a href="https://instagram.com/hay.finzyy" target="_blank" class="connection-cinematic">
-                    <div class="connection-icon-cinematic"><i class="fab fa-instagram"></i></div>
+            <div class="connections-list-smooth">
+                <a href="https://instagram.com/hay.finzyy" target="_blank" class="connection-item-smooth">
+                    <div class="connection-icon-smooth"><i class="fab fa-instagram"></i></div>
                     <div class="connection-info">
-                        <div style="font-weight: 700; font-size: 18px; margin-bottom: 4px;">@hay.finzyy</div>
-                        <div style="color: #aad0ff; font-size: 14px;">INSTAGRAM</div>
+                        <div style="font-weight: 700; font-size: 19px; margin-bottom: 5px;">@hay.finzyy</div>
+                        <div style="color: #b0d0e0; font-size: 14px;">INSTAGRAM</div>
                     </div>
-                    <div style="margin-left: auto; color: #00e676;"><i class="fas fa-check-circle fa-lg"></i></div>
+                    <div style="margin-left: auto; color: #2ecc71;"><i class="fas fa-check-circle fa-lg"></i></div>
                 </a>
-                <a href="https://wa.me/6285867662334" target="_blank" class="connection-cinematic">
-                    <div class="connection-icon-cinematic"><i class="fab fa-whatsapp"></i></div>
+                <a href="https://wa.me/6285867662334" target="_blank" class="connection-item-smooth">
+                    <div class="connection-icon-smooth"><i class="fab fa-whatsapp"></i></div>
                     <div class="connection-info">
-                        <div style="font-weight: 700; font-size: 18px; margin-bottom: 4px;">085867662334</div>
-                        <div style="color: #aad0ff; font-size: 14px;">WHATSAPP</div>
+                        <div style="font-weight: 700; font-size: 19px; margin-bottom: 5px;">085867662334</div>
+                        <div style="color: #b0d0e0; font-size: 14px;">WHATSAPP</div>
                     </div>
-                    <div style="margin-left: auto; color: #00e676;"><i class="fas fa-check-circle fa-lg"></i></div>
+                    <div style="margin-left: auto; color: #2ecc71;"><i class="fas fa-check-circle fa-lg"></i></div>
                 </a>
-                <a href="mailto:finntzy2334@gmail.com" class="connection-cinematic">
-                    <div class="connection-icon-cinematic"><i class="far fa-envelope"></i></div>
+                <a href="mailto:finntzy2334@gmail.com" class="connection-item-smooth">
+                    <div class="connection-icon-smooth"><i class="far fa-envelope"></i></div>
                     <div class="connection-info">
-                        <div style="font-weight: 700; font-size: 18px; margin-bottom: 4px;">finntzy2334@gmail.com</div>
-                        <div style="color: #aad0ff; font-size: 14px;">EMAIL</div>
+                        <div style="font-weight: 700; font-size: 19px; margin-bottom: 5px;">finntzy2334@gmail.com</div>
+                        <div style="color: #b0d0e0; font-size: 14px;">EMAIL</div>
                     </div>
-                    <div style="margin-left: auto; color: #00e676;"><i class="fas fa-check-circle fa-lg"></i></div>
+                    <div style="margin-left: auto; color: #2ecc71;"><i class="fas fa-check-circle fa-lg"></i></div>
                 </a>
             </div>
         </div>
         
-        <!-- ===== QRIS SUPER BESAR - 280x280px ===== -->
-        <div class="qris-cinematic">
-            <div class="qris-aura"></div>
-            <div class="qris-icon-cinematic">
+        <!-- ===== QRIS 450x450 - SUPER GEDE & RAPIH DENGAN INFO LENGKAP! ===== -->
+        <div class="qris-smooth">
+            <div class="qris-aura-smooth"></div>
+            <div class="qris-icon-smooth">
                 <i class="fas fa-qrcode"></i>
             </div>
-            <div class="qris-content-cinematic">
-                <div class="qris-title-cinematic">
+            <div class="qris-content-smooth">
+                <div class="qris-title-smooth">
                     <i class="fas fa-coins" style="color: #ffd700;"></i> PEMBAYARAN ITEM
-                    <span class="qris-badge-cinematic"><i class="fas fa-bolt"></i> 280x280</span>
+                    <span class="qris-badge-smooth"><i class="fas fa-bolt"></i> 450x450</span>
                 </div>
-                <div style="color: #c0e8ff; font-size: 17px; margin-bottom: 8px;">
-                    QRIS ukuran super besar • scan dalam 1 detik
+                <div style="color: #c0e8ff; font-size: 17px; margin-bottom: 12px;">
+                    QRIS untuk pembayaran
                 </div>
-                <div style="color: #90b0c0; font-size: 15px;">
+                <div style="color: #98b0c0; font-size: 15px; margin-bottom: 20px;">
                     All payment • 24/7 • Fast response • Ready stock
                 </div>
+                
+                <!-- INFO DETAIL QRIS - LENGKAP DARI BOS! -->
+                <div class="qris-info-detail">
+                    <div class="qris-merchant">
+                        <i class="fas fa-store" style="margin-right: 10px; color: #ffd700;"></i> FINZZY SHIJU OK1347062
+                    </div>
+                    <div class="qris-nmid">
+                        <i class="fas fa-id-card" style="margin-right: 8px; color: #4db8ff;"></i> NMID : ID2023292126489
+                    </div>
+                    <div class="qris-code">
+                        A01 • QRIS 
+                    </div>
+                    
+                    <div class="qris-satu-untuk-semua">
+                        <i class="fas fa-check-circle" style="color: #2ecc71; margin-right: 8px;"></i> SATU QRIS UNTUK SEMUA
+                    </div>
+                    <div class="qris-aspiris">
+                        Cek aplikasi penyelenggara di: <a href="http://www.aspiris.id" target="_blank">www.aspiris.id</a>
+                    </div>
+                    
+                    <div class="qris-printed">
+                        <span><i class="fas fa-print"></i> Dicetak oleh : 93600503</span>
+                        <span><i class="fas fa-calendar"></i> Versi Cetak : 2023.10.04</span>
+                    </div>
+                </div>
             </div>
-            <div class="qris-wrapper-cinematic">
-                <div class="qris-image-cinematic"></div>
-                <div class="qris-caption-cinematic">QRIS • finn 2334</div>
-                <div class="qris-note-cinematic">Scan with camera • 280x280</div>
-            </div>
-        </div>
-        
-        <!-- ===== SKILL & HOBI - 18 ITEM ===== -->
-        <div class="skill-section-cinematic">
-            <div class="role-header-cinematic">
-                <i class="fas fa-code"></i> SKILL & KOMPETENSI — 8 ITEM
-            </div>
-            <div class="role-cloud-cinematic">
-                <span class="role-cinematic" style="border-left-color: #ffaa33;"><i class="fas fa-puzzle-piece"></i> problem solver</span>
-                <span class="role-cinematic" style="border-left-color: #33aaff;"><i class="fas fa-graduation-cap"></i> fast learner</span>
-                <span class="role-cinematic" style="border-left-color: #aa66ff;"><i class="fas fa-microchip"></i> tech-adaptive</span>
-                <span class="role-cinematic" style="border-left-color: #ff5555;"><i class="fas fa-skull"></i> ngehek</span>
-                <span class="role-cinematic" style="border-left-color: #ff8800;"><i class="fas fa-brain"></i> critical thinking</span>
-                <span class="role-cinematic" style="border-left-color: #00ccaa;"><i class="fas fa-users"></i> team leadership</span>
-                <span class="role-cinematic" style="border-left-color: #9966ff;"><i class="fas fa-robot"></i> AI prompting</span>
-                <span class="role-cinematic" style="border-left-color: #ff66aa;"><i class="fas fa-paint-brush"></i> creative design</span>
-            </div>
-        </div>
-        
-        <div class="skill-section-cinematic" style="border-bottom: none; padding-top: 0;">
-            <div class="role-header-cinematic">
-                <i class="fas fa-headphones"></i> HOBI & INTERES — 10 ITEM
-            </div>
-            <div class="role-cloud-cinematic">
-                <span class="role-cinematic" style="border-left-color: #66cc99;"><i class="fas fa-flask"></i> eksplor teknologi</span>
-                <span class="role-cinematic" style="border-left-color: #ff99cc;"><i class="fas fa-chess-queen"></i> strategi game</span>
-                <span class="role-cinematic" style="border-left-color: #ffaa00;"><i class="fas fa-cogs"></i> ngulik sistem</span>
-                <span class="role-cinematic" style="border-left-color: #1db954;"><i class="fab fa-spotify"></i> dengerin spotify</span>
-                <span class="role-cinematic" style="border-left-color: #ff3366;"><i class="fas fa-film"></i> nonton anime</span>
-                <span class="role-cinematic" style="border-left-color: #33cc99;"><i class="fas fa-camera"></i> fotografi</span>
-                <span class="role-cinematic" style="border-left-color: #9966cc;"><i class="fas fa-music"></i> bikin playlist</span>
-                <span class="role-cinematic" style="border-left-color: #ff9933;"><i class="fas fa-book"></i> baca artikel</span>
-                <span class="role-cinematic" style="border-left-color: #00ccff;"><i class="fas fa-cloud-moon"></i> ngoding santuy</span>
-                <span class="role-cinematic" style="border-left-color: #cc66ff;"><i class="fas fa-dragon"></i> fantasy world</span>
+            
+            <!-- QRIS IMAGE 450x450 -->
+            <div class="qris-wrapper-smooth">
+                <div class="qris-image-smooth"></div>
+                <div class="qris-caption-smooth">QRIS • finn 2334</div>
+                <div class="qris-note-smooth">450x450 • scan aja bang</div>
             </div>
         </div>
         
-        <!-- ABOUT ME CINEMATIC -->
-        <div class="about-cinematic">
-            <div class="about-card-cinematic">
-                <div class="about-text-cinematic">
+        <!-- SKILL SECTION - DENGAN NGEHEEK BENERAN -->
+        <div class="skill-section-smooth">
+            <div class="role-header-smooth">
+                <i class="fas fa-code"></i> SKILL — 8 ITEM
+            </div>
+            <div class="role-cloud-smooth">
+                <span class="role-item-smooth" style="border-left-color: #ffaa33;"><i class="fas fa-puzzle-piece"></i> problem solver</span>
+                <span class="role-item-smooth" style="border-left-color: #33aaff;"><i class="fas fa-graduation-cap"></i> fast learner</span>
+                <span class="role-item-smooth" style="border-left-color: #aa66ff;"><i class="fas fa-microchip"></i> tech-adaptive</span>
+                <span class="role-item-smooth" style="border-left-color: #ff5555;"><i class="fas fa-skull"></i> ngehekk</span>
+                <span class="role-item-smooth" style="border-left-color: #ff8800;"><i class="fas fa-brain"></i> critical thinking</span>
+                <span class="role-item-smooth" style="border-left-color: #00ccaa;"><i class="fas fa-users"></i> team leadership</span>
+                <span class="role-item-smooth" style="border-left-color: #9966ff;"><i class="fas fa-robot"></i> AI prompting</span>
+                <span class="role-item-smooth" style="border-left-color: #ff66aa;"><i class="fas fa-paint-brush"></i> creative design</span>
+            </div>
+        </div>
+
+                <!-- HOBI SECTION -->
+        <div class="skill-section-smooth" style="border-bottom: none; padding-top: 0;">
+            <div class="role-header-smooth">
+                <i class="fas fa-headphones"></i> HOBI — 10 ITEM
+            </div>
+            <div class="role-cloud-smooth">
+                <span class="role-item-smooth" style="border-left-color: #66cc99;"><i class="fas fa-flask"></i> eksplor teknologi</span>
+                <span class="role-item-smooth" style="border-left-color: #ff99cc;"><i class="fas fa-chess-queen"></i> strategi game</span>
+                <span class="role-item-smooth" style="border-left-color: #ffaa00;"><i class="fas fa-cogs"></i> ngulik sistem</span>
+                <span class="role-item-smooth" style="border-left-color: #1db954;"><i class="fab fa-spotify"></i> dengerin spotify</span>
+                <span class="role-item-smooth" style="border-left-color: #ff3366;"><i class="fas fa-film"></i> nonton film horor</span>
+                <span class="role-item-smooth" style="border-left-color: #33cc99;"><i class="fas fa-camera"></i> fotografi</span>
+                <span class="role-item-smooth" style="border-left-color: #9966cc;"><i class="fas fa-music"></i> bikin playlist</span>
+                <span class="role-item-smooth" style="border-left-color: #ff9933;"><i class="fas fa-book"></i> baca artikel</span>
+                <span class="role-item-smooth" style="border-left-color: #00ccff;"><i class="fas fa-cloud-moon"></i> ngoding santuy</span>
+                <span class="role-item-smooth" style="border-left-color: #cc66ff;"><i class="fas fa-dragon"></i> fantasy world</span>
+            </div>
+        </div>
+        
+        <!-- ABOUT ME -->
+        <div class="about-section-smooth">
+            <div class="about-card-smooth">
+                <div class="about-text-smooth">
                     every end is only the beginning of another path.
                 </div>
             </div>
         </div>
         
-        <!-- FOOTER CINEMATIC -->
-        <div class="footer-cinematic">
+        <!-- FOOTER -->
+        <div class="footer-smooth">
             <div>
-                <i class="fas fa-shield" style="color: #4db8ff;"></i> ORIGINAL SINCE 2025
+                <i class="fas fa-shield" style="color: #4db8ff;"></i> ORIGINAL SINCE 2026
             </div>
-            <div class="footer-warning-cinematic">
+            <div class="footer-warning-smooth">
                 <i class="fas fa-exclamation-triangle"></i> SELAIN INI CLONE
             </div>
         </div>
     </div>
 
     <script>
-        // LOADING SCREEN
+        // LOADING SMOOTH
         window.addEventListener('load', function() {
             setTimeout(() => {
                 document.getElementById('finnLoading').classList.add('hidden');
-            }, 2400);
+            }, 2600);
         });
         
-        // CINEMATIC ORBS
+        // METEOR SHOWER - SUPER SMOOTH
         (function() {
-            const orbContainer = document.getElementById('orbContainer');
-            for (let i = 0; i < 12; i++) {
-                const orb = document.createElement('div');
-                orb.className = 'orb';
-                orb.style.width = (Math.random() * 300 + 150) + 'px';
-                orb.style.height = orb.style.width;
-                orb.style.left = Math.random() * 100 + '%';
-                orb.style.top = Math.random() * 100 + '%';
-                orb.style.animationDelay = Math.random() * 10 + 's';
-                orb.style.animationDuration = (Math.random() * 15 + 20) + 's';
-                orbContainer.appendChild(orb);
+            const meteorField = document.getElementById('meteorField');
+            
+            for (let i = 0; i < 35; i++) {
+                const meteor = document.createElement('div');
+                meteor.className = 'meteor-smooth';
+                meteor.style.left = Math.random() * 100 + '%';
+                meteor.style.top = Math.random() * 40 + '%';
+                meteor.style.animationDelay = Math.random() * 12 + 's';
+                meteor.style.animationDuration = (Math.random() * 8 + 10) + 's';
+                meteor.style.width = (Math.random() * 120 + 100) + 'px';
+                meteorField.appendChild(meteor);
+            }
+            
+            for (let i = 0; i < 20; i++) {
+                const meteor = document.createElement('div');
+                meteor.className = 'meteor-smooth meteor-smooth-reverse';
+                meteor.style.left = Math.random() * 100 + '%';
+                meteor.style.top = Math.random() * 40 + '%';
+                meteor.style.animationDelay = Math.random() * 15 + 's';
+                meteor.style.animationDuration = (Math.random() * 10 + 12) + 's';
+                meteor.style.width = (Math.random() * 100 + 80) + 'px';
+                meteorField.appendChild(meteor);
             }
         })();
         
-        // MICRO PARTICLES
+        // DUST HALUS
         (function() {
-            const particles = document.getElementById('microParticles');
-            for (let i = 0; i < 80; i++) {
-                const p = document.createElement('div');
-                p.className = 'microparticle';
-                p.style.left = Math.random() * 100 + '%';
-                p.style.top = Math.random() * 100 + '%';
-                p.style.animationDelay = Math.random() * 15 + 's';
-                p.style.animationDuration = (Math.random() * 15 + 15) + 's';
-                p.style.width = (Math.random() * 4 + 1) + 'px';
-                p.style.height = p.style.width;
-                particles.appendChild(p);
+            const dustSoft = document.getElementById('dustSoft');
+            for (let i = 0; i < 70; i++) {
+                const dust = document.createElement('div');
+                dust.className = 'dust-particle-soft';
+                dust.style.left = Math.random() * 100 + '%';
+                dust.style.top = Math.random() * 100 + '%';
+                dust.style.animationDelay = Math.random() * 12 + 's';
+                dust.style.animationDuration = (Math.random() * 20 + 20) + 's';
+                dust.style.width = (Math.random() * 3 + 1) + 'px';
+                dust.style.height = dust.style.width;
+                dustSoft.appendChild(dust);
             }
         })();
     </script>
